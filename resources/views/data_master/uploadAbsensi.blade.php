@@ -19,6 +19,9 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.alert-unggah').hide();
+    $("#upload").change(function(){
+      $('.custom-file-label').html(this.value.split("\\").pop());
+    })
 });
 </script>
 @endsection
@@ -73,7 +76,10 @@ $(document).ready(function() {
                 <div class="modal-body">
 
                     <form class="form-horizontal" id="form">
-                        
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="upload" accept=".xlsx">
+                          <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
                     </form>
 
                     <div class="alert alert-info alert-unggah">
