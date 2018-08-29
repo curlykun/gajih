@@ -34,6 +34,7 @@ Route::group(['middleware' => ['checkSession','checkMenu'] ],function(){
 	//MENU UPLOAD ABSENSI
 	Route::prefix('upload_absensi')->group(function () {
 		Route::get('/', 'data_master\uploadAbsensiController@index');
+		Route::post('/upload', 'data_master\uploadAbsensiController@upload');
 	});
 
 	/*End Data Master*/

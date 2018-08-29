@@ -14,10 +14,5 @@
   	sejenis.</p>
       </div>
     </div>
-    {!! Form::open(['url' => 'foo/bar']) !!}
-    {!! Form::label('email', 'E-Mail Address') !!}
-    {!! Form::email('email', $value = null, $attributes = ['class'=>'form-control']) !!}
-    {!! Form::text('text', $value = null, $attributes = ['class'=>'form-control']) !!}
-    {!! Form::close() !!}
   </div>
 @endsection

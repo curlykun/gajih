@@ -4,7 +4,6 @@ namespace App\Http\Controllers\data_master;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use DataTables;
@@ -25,7 +24,7 @@ class userController extends Controller
         $data_menu      = $request->get('data_menu');
         $userList 		= $this->show();
 
-        return view('data_master.user', [
+        return view('data_master.karyawan.user', [
                     'data_group'=> $data_group,
                     'data_menu'	=> $data_menu,
                     'userList' => $userList,
@@ -150,7 +149,7 @@ class userController extends Controller
     public function update_useraccess(Request $request)
     {
         
-        //list menu yang akrif
+        //list menu yang aktif
         $msg = "";
         $arrMenu = array();
         if(!isset($request->MENU)){
