@@ -5,17 +5,17 @@
 @endsection
 
 @section('style')
-<link href="{{ url('public/coreui/vendors/DataTables/css/data-table.css') }}" rel="stylesheet" />
-<link href="{{ url('public/coreui/vendors/bootstrap4-datetimepicker-master/build/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" />
+<link href="{{ url('coreui/vendors/DataTables/css/data-table.css') }}" rel="stylesheet" />
+<link href="{{ url('coreui/vendors/bootstrap4-datetimepicker-master/build/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" />
 <style type="text/css">
 
 </style>
 @endsection
 
 @section('script')
-<script type="text/javascript" src="{{ url('public/coreui/vendors/DataTables/js/jquery.dataTables.js') }}"></script>
-<script type="text/javascript" src="{{ url('public/coreui/vendors/DataTables/js/dataTables.responsive.js') }}"></script>
-<script type="text/javascript" src="{{ url('public/coreui/vendors/bootstrap4-datetimepicker-master/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+<script type="text/javascript" src="{{ url('coreui/vendors/DataTables/js/jquery.dataTables.js') }}"></script>
+<script type="text/javascript" src="{{ url('coreui/vendors/DataTables/js/dataTables.responsive.js') }}"></script>
+<script type="text/javascript" src="{{ url('coreui/vendors/bootstrap4-datetimepicker-master/build/js/bootstrap-datetimepicker.min.js') }}"></script>
 @include('lembur.input_lembur.js')
 @endsection
 

@@ -5,17 +5,17 @@
 @endsection
 
 @section('style')
-<link href="{{ url('public/coreui/vendors/DataTables/css/data-table.css') }}" rel="stylesheet" />
-<link href="{{ url('public/coreui/vendors/bootstrap-datepicker-master/dist/css/bootstrap-datepicker.standalone.min.css') }}" rel="stylesheet" />
+<link href="{{ url('coreui/vendors/DataTables/css/data-table.css') }}" rel="stylesheet" />
+<link href="{{ url('coreui/vendors/bootstrap-datepicker-master/dist/css/bootstrap-datepicker.standalone.min.css') }}" rel="stylesheet" />
 <style type="text/css">
 
 </style>
 @endsection
 
 @section('script')
-<script type="text/javascript" src="{{ url('public/coreui/vendors/DataTables/js/jquery.dataTables.js') }}"></script>
-<script type="text/javascript" src="{{ url('public/coreui/vendors/DataTables/js/dataTables.responsive.js') }}"></script>
-<script type="text/javascript" src="{{ url('public/coreui/vendors/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js') }}"></script>
+<script type="text/javascript" src="{{ url('coreui/vendors/DataTables/js/jquery.dataTables.js') }}"></script>
+<script type="text/javascript" src="{{ url('coreui/vendors/DataTables/js/dataTables.responsive.js') }}"></script>
+<script type="text/javascript" src="{{ url('coreui/vendors/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js') }}"></script>
 @include('data_master.upload.js')
 @endsection
 

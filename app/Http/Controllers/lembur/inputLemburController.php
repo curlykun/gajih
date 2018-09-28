@@ -5,7 +5,7 @@ namespace App\Http\Controllers\lembur;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\lemburModel;
-use App\userModel;
+use App\UserModel;
 use Carbon\Carbon;
 
 class inputLemburController extends Controller
@@ -27,7 +27,7 @@ class inputLemburController extends Controller
     }
     public function getFM()
     {
-       $data = userModel::where('jabatan','FACTORY MANAGER')->get();
+       $data = UserModel::where('jabatan','FACTORY MANAGER')->get();
         return $data;
     }
     public function store(Request $request)
