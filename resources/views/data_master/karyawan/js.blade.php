@@ -19,7 +19,7 @@
     }
     var jabatan = "{{ Session::get('jabatan') }}";
     $('.alert').hide();$('#alert-update').hide(); 
-    $('#example').DataTable( {
+    var table = $('#example').DataTable( {
         "responsive": true,
         "processing": true,
         "serverSide": true,
@@ -65,8 +65,11 @@
 
                 if(jabatan.toUpperCase() === 'KEUANGAN'){
                     return tunjangan;
+                }
+                if(jabatan.toUpperCase() === 'ADMIN'){
+                    return del+edit+user_access+tunjangan;
                 }else{
-                    return del+edit+user_access;
+                    return '<span class="fa fa-check-circle-o text-success fa-lg"></span>';
                 }
                 
               }

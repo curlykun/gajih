@@ -12,13 +12,13 @@ class UserModel extends Model
    public static function AddTunjangan($nik,$basic, $bpjs, $jamsostek, $uang_makan, $uang_transport)
    {
    		$ret = UserModel::where('nik',$nik)
-                                ->update([  
-                                			'basic'=>$basic,
-                                            'bpjs'=>$bpjs,
-                                            'jamsostek'=>$jamsostek,
-                                            'uang_makan'=>$uang_makan,
-                                            'uang_transport'=>$uang_transport
-                                        ]);
+                        ->update([  
+                    			'basic'=>$basic,
+                          'bpjs'=>$bpjs,
+                          'jamsostek'=>$jamsostek,
+                          'uang_makan'=>$uang_makan,
+                          'uang_transport'=>$uang_transport
+                        ]);
    		return $ret;
    }
 }

@@ -17,6 +17,7 @@
 @endsection
 
 @section('content')
+    
     @component('component.card')
         @slot('title')
             <i class="fa fa-users"></i> KARYAWAN

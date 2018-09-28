@@ -21,33 +21,57 @@
 
 @section('content')
     {!! $errors->first('file','<div class="alert alert-warning">:message</div>') !!}
+    {!! $errors->first('error','<div class="alert alert-danger">:message</div>') !!}
+
 
     @component('component.card')
         @slot('title')
-            <i class="fa fa-address-card-o"></i> ABSENSI KARYAWAN
+            <i class="fa fa-cloud-upload"></i> ABSENSI KARYAWAN
         @endslot
+
         <div class="form-inline">
-            <button type="submit" class="btn btn-primary mb-2" data-toggle="modal" href='#modal_upload'><i class="fa fa-upload"></i> UNGGAH DATA</button>
+            <button type="submit" class="btn btn-outline-primary mb-2" data-toggle="modal" href='#modal_upload'><i class="fa fa-upload"></i> UNGGAH DATA</button>
             
             <div class="input-group mx-sm-3 mb-2">
-                <input type="text" class="form-control border border-primary" data-provide="datepicker" data-date-autoclose="true" placeholder="Cari Data">
+                {{-- <input type="text" class="form-control border border-primary" data-provide="datepicker" data-date-autoclose="true" placeholder="Cari Data"> --}}
+                <select class="form-control btn-outline-success" id="tahun" style="width: 150px" data-toggle="tooltip" data-placement="top" title="Pilih Tahun">
+                    <option value="">Pilih Tahun</option>
+                    @foreach($tahun as $key => $value )
+                        <option value="{{ $value->year }}">{{ $value->year }}</option>
+                    @endforeach
+                </select>
+                <select class="form-control btn-outline-success" id="bulan" style="width: 150px" data-toggle="tooltip" data-placement="top" title="Pilih Bulan">
+                    <option value="">Pilih Bulan</option>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
                 <div class="input-group-append">
-                    <button class="btn btn-outline-primary" type="button"><i class="fa fa-search"></i></button>
+                    <button class="btn btn-outline-success" type="button" onclick="data( $('#tahun').val(),$('#bulan').val() )"><i class="fa fa-search"></i></button>
                 </div>
             </div>
-            <table id="example" class="table table-responsive-sm table-hover" style="width:100%">
-                <thead>
-                    <tr>
-                        <th width="10%">NIK</th>
-                        <th width="20%">NAMA</th>
-                        <th width="20%">POSISI</th>
-                        <th width="20%">E-MAIL</th>
-                        <th width="15%">USER NAME</th>
-                        <th width="15%">AKSI</th>
-                    </tr>
-                </thead>
-            </table>
         </div>
+        <table id="upload-table" class="table table-responsive-lg table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>NIK</th>
+                    <th>NAMA</th>
+                    <th>TANGGAL</th>
+                    <th>MASUK</th>
+                    <th>KELUAR</th>
+                </tr>
+            </thead>
+        </table>
     @endcomponent
 
     {{ Form::open(['url'=>'/upload_absensi/upload','method'=>'post','class'=>'form-horizontal','enctype'=>'multipart/form-data']) }}

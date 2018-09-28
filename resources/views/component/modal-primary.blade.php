@@ -1,5 +1,5 @@
 <div class="modal fade" id="{{ $id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-primary" role="document">
+    <div class="modal-dialog modal-primary {{ isset($size) ? $size : "" }} " role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">{{ $title }}</h4>

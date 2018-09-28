@@ -17,13 +17,13 @@
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
     <title>SISTEM PENGGAJIAN PT.NUTRINDO BOGARASA</title>
     <!-- Icons-->
-    <link href="{{ url('public/coreui/vendors/@coreui/icons/css/coreui-icons.min.css') }}" rel="stylesheet">
-    <link href="{{ url('public/coreui/vendors/flag-icon-css/css/flag-icon.min.css') }}" rel="stylesheet">
-    <link href="{{ url('public/coreui/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-    <link href="{{ url('public/coreui/vendors/simple-line-icons/css/simple-line-icons.css') }}" rel="stylesheet">
+    <link href="{{ url('coreui/vendors/@coreui/icons/css/coreui-icons.min.css') }}" rel="stylesheet">
+    <link href="{{ url('coreui/vendors/flag-icon-css/css/flag-icon.min.css') }}" rel="stylesheet">
+    <link href="{{ url('coreui/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ url('coreui/vendors/simple-line-icons/css/simple-line-icons.css') }}" rel="stylesheet">
     <!-- Main styles for this application-->
-    <link href="{{ url('public/coreui/css/style.css') }}" rel="stylesheet">
-    <link href="{{ url('public/coreui/vendors/pace-progress/css/pace.min.css') }}" rel="stylesheet">
+    <link href="{{ url('coreui/css/style.css') }}" rel="stylesheet">
+    <link href="{{ url('coreui/vendors/pace-progress/css/pace.min.css') }}" rel="stylesheet">
     @yield('style')
   </head>
   <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
@@ -32,8 +32,8 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <a class="navbar-brand" href="#">
-        <img class="navbar-brand-full" src="{{ url('public/coreui/img/brand/logo.jpg') }}" width="135" alt="CoreUI Logo">
-        {{-- <img class="navbar-brand-minimized" src="{{ url('public/coreui/img/brand/sygnet.svg') }}" width="30" height="30" alt="CoreUI Logo"> --}}
+        <img class="navbar-brand-full" src="{{ url('coreui/img/brand/logo.jpg') }}" width="135" alt="CoreUI Logo">
+        {{-- <img class="navbar-brand-minimized" src="{{ url('coreui/img/brand/sygnet.svg') }}" width="30" height="30" alt="CoreUI Logo"> --}}
       </a>
       <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
         <span class="navbar-toggler-icon"></span>
@@ -114,12 +114,14 @@
       </div>
     </footer>
     <!-- Bootstrap and necessary plugins-->
-    <script src="{{ url('public/coreui/vendors/jquery/js/jquery.min.js') }}"></script>
-    <script src="{{ url('public/coreui/vendors/popper.js/js/popper.min.js') }}"></script>
-    <script src="{{ url('public/coreui/vendors/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ url('public/coreui/vendors/pace-progress/js/pace.min.js') }}"></script>
-    <script src="{{ url('public/coreui/vendors/perfect-scrollbar/js/perfect-scrollbar.min.js') }}"></script>
-    <script src="{{ url('public/coreui/vendors/@coreui/coreui/js/coreui.min.js') }}"></script>
+    <script src="{{ url('coreui/vendors/jquery/js/jquery.min.js') }}"></script>
+    <script src="{{ url('coreui/vendors/popper.js/js/popper.min.js') }}"></script>
+    <script src="{{ url('coreui/vendors/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url('coreui/vendors/pace-progress/js/pace.min.js') }}"></script>
+    <script src="{{ url('coreui/vendors/perfect-scrollbar/js/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ url('coreui/vendors/@coreui/coreui/js/coreui.min.js') }}"></script>
+    <!-- momenjs untuk format tanggal dan jam-->
+    <script src="{{ url('coreui/vendors/momenjs/momen.js') }}"></script>
     @yield('script')
   </body>
 </html>

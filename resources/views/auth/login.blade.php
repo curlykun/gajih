@@ -18,13 +18,13 @@
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
     <title>MASUK | SISTEM PENGGAJIAN PT.NUTRINDO BOGARASA</title>
     <!-- Icons-->
-    <link href="{{ url('public/coreui/vendors/@coreui/icons/css/coreui-icons.min.css') }}" rel="stylesheet">
-    <link href="{{ url('public/coreui/vendors/flag-icon-css/css/flag-icon.min.css') }}" rel="stylesheet">
-    <link href="{{ url('public/coreui/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-    <link href="{{ url('public/coreui/vendors/simple-line-icons/css/simple-line-icons.css') }}" rel="stylesheet">
+    <link href="{{ url('coreui/vendors/@coreui/icons/css/coreui-icons.min.css') }}" rel="stylesheet">
+    <link href="{{ url('coreui/vendors/flag-icon-css/css/flag-icon.min.css') }}" rel="stylesheet">
+    <link href="{{ url('coreui/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ url('coreui/vendors/simple-line-icons/css/simple-line-icons.css') }}" rel="stylesheet">
     <!-- Main styles for this application-->
-    <link href="{{ url('public/coreui/css/style.css') }}" rel="stylesheet">
-    <link href="{{ url('public/coreui/vendors/pace-progress/css/pace.min.css') }}" rel="stylesheet">
+    <link href="{{ url('coreui/css/style.css') }}" rel="stylesheet">
+    <link href="{{ url('coreui/vendors/pace-progress/css/pace.min.css') }}" rel="stylesheet">
 
   </head>
   <body class="app flex-row align-items-center">
@@ -68,7 +68,7 @@
             <div class="card bg-default py-5 d-md-down-none" style="width:44%">
               <div class="card-body text-center">
                 <div>
-                  <img class="navbar-brand-full" src="{{ url('public/coreui/img/brand/logo.jpg') }}" width="135" alt="CoreUI Logo" style="width:70%;margin-bottom: 5px">
+                  <img class="navbar-brand-full" src="{{ url('coreui/img/brand/logo.jpg') }}" width="135" alt="CoreUI Logo" style="width:70%;margin-bottom: 5px">
                   <h4 style="margin-bottom: 15px">PT. NUTRINDO BOGARASA</h4>
                   <p>Menjadi produsen makanan dan minuman yang berkualitas
         					dan terpercaya di mata konsumen domestik maupun internasional
@@ -83,12 +83,12 @@
     </div>
 
     <!-- Bootstrap and necessary plugins-->
-    <script src="{{ url('public/coreui/vendors/jquery/js/jquery.min.js') }}"></script>
-    <script src="{{ url('public/coreui/vendors/popper.js/js/popper.min.js') }}"></script>
-    <script src="{{ url('public/coreui/vendors/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ url('public/coreui/vendors/pace-progress/js/pace.min.js') }}"></script>
-    <script src="{{ url('public/coreui/vendors/perfect-scrollbar/js/perfect-scrollbar.min.js') }}"></script>
-    <script src="{{ url('public/coreui/vendors/@coreui/coreui/js/coreui.min.js') }}"></script>
+    <script src="{{ url('coreui/vendors/jquery/js/jquery.min.js') }}"></script>
+    <script src="{{ url('coreui/vendors/popper.js/js/popper.min.js') }}"></script>
+    <script src="{{ url('coreui/vendors/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url('coreui/vendors/pace-progress/js/pace.min.js') }}"></script>
+    <script src="{{ url('coreui/vendors/perfect-scrollbar/js/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ url('coreui/vendors/@coreui/coreui/js/coreui.min.js') }}"></script>
 
   </body>
 </html>

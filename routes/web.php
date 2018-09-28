@@ -33,8 +33,20 @@ Route::group(['middleware' => ['checkSession','checkMenu'] ],function(){
 
 	//MENU UPLOAD ABSENSI
 	Route::prefix('upload_absensi')->group(function () {
-		Route::get('/', 'data_master\uploadAbsensiController@index');
+		Route::get('/', 'data_master\uploadAbsensiController@index')->name('upload_absensi');
 		Route::post('/upload', 'data_master\uploadAbsensiController@upload');
+		Route::get('/store', 'data_master\uploadAbsensiController@store')->name('upload_absensi.store');
+		Route::post('/data', 'data_master\uploadAbsensiController@getBasicData')->name('upload_absensi.data');
+		Route::get('/debug', 'data_master\debugController@index');
+	});
+
+	//MENU UPLOAD LEMBUR
+	Route::prefix('lembur')->group(function () {
+		Route::get('/', function(){
+
+		});
+		Route::get('/input_lembur', 'lembur\inputLemburController@index')->name('lembur.input_lembur');
+		Route::post('/input_lembur/store', 'lembur\inputLemburController@store');
 	});
 
 	/*End Data Master*/
@@ -48,3 +60,4 @@ Route::post('/cekuser', 'homeController@cekuser');
 
 
 Route::get('/test', 'homeController@test');
+Route::get('/debug', 'debugController@index');
