@@ -9,10 +9,7 @@
 	      $('.custom-file-label').html(this.value.split("\\").pop());
 	    });
 
-	    data( moment().format('Y'), moment().format('MM') );
-
-        
-
+	    // data( moment().format('Y'), moment().format('MM') );
 	});
 	function date() {
 		$('#tanggal').datetimepicker({
@@ -46,16 +43,23 @@
 
         });
 
-        $('#tanggal').data("DateTimePicker").maxDate( moment() );
-        $("#tanggal").on("dp.change", function (e) {
+		$('#tanggal').data("DateTimePicker").maxDate( moment().format('YYYY-MM-DD') );
+		$('#tanggal').data("DateTimePicker").minDate( moment().format('YYYY-MM-01') );
+
+        $("#tanggal").on("dp.change", function (e) {			
+			
+			// $('#masuk').data("DateTimePicker").maxDate( 
+			// 	moment(e.date).format('13:59:00')
+			// );
+			// $('#masuk').data("DateTimePicker").minDate( 
+			// 	moment(e.date).format('07:00:00')
+			// );
             $('#txt_tanggal').html($("#tanggal").val());
-            $('#masuk').data("DateTimePicker").minDate( moment(e.date).set('hour', 6) );
         });
 
         $("#masuk").on("dp.change", function (e) {
-            $('#keluar').data("DateTimePicker").minDate( moment(e.date).set('hour', 7) );
-            $('#keluar').data("DateTimePicker").maxDate( moment(e.date).set('hour', 0) );
-
+            $('#keluar').data("DateTimePicker").minDate( moment(e.date).hour(7).minute(0).second(0)  );
+            $('#keluar').data("DateTimePicker").maxDate( moment(e.date).hour(24).minute(0).second(0) );
             $('#txt_masuk').html($(this).val());
         });
         $("#keluar").on("dp.change", function (e) {

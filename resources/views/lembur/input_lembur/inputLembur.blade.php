@@ -63,21 +63,21 @@
         </div>
         <div class="row p-2">
 
-            <div class="col-sm-4 border border-primary">
+            <div class="col-md-4 border border-primary">
                 <div class="6"><p class="text-center">TANGGAL<br><span id="txt_tanggal">-</span></p></div>
                 <div class="6">
                     {{ Form::hidden('tanggal',old('masuk'),['autocomplete'=>'off','class'=>'form-control','id'=>'tanggal','required']) }}
                 </div>
             </div>
 
-            <div class="col-sm-4 border border-primary">
+            <div class="col-md-4 border border-primary">
                 <div class="6"><p class="text-center">MASUK<br><span id="txt_masuk">-</span></p></div>
                 <div class="6">
                     {{ Form::hidden('masuk',old('masuk'),['autocomplete'=>'off','class'=>'form-control','id'=>'masuk','required']) }}
                 </div>
             </div>
 
-            <div class="col-sm-4 border border-primary">
+            <div class="col-md-4 border border-primary">
                 <div class="6"><p class="text-center">KELUAR<br><span id="txt_keluar">-</span></p></div>
                 <div class="6">
                     {{ Form::hidden('keluar',old('keluar'),['autocomplete'=>'off','class'=>'form-control','id'=>'keluar','required']) }}
