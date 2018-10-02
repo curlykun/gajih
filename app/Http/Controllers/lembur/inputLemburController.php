@@ -23,10 +23,24 @@ class inputLemburController extends Controller
     {
         if (request()->ajax()) {
             $nik = $request->session()->get('nik');
-            $data = lemburModel::where('nik',$nik);
+            $data = lemburModel::where('nik',$nik)->orderBy('tanggal','desc');
             return DataTables::of($data)
                 ->addColumn('action', function ($data) {
-                    return '<a href="#edit-'.$data->nik.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> '.$data->nik.'</a>';
+                    $info = '';
+                    switch ($data->approv) {
+                        case null:
+                            $info = '<h5 class="text-warning"><i class="fa fa-clock-o"></i> Menunggu... </h5>';
+                            break;
+                        
+                        case 0:
+                            $info = '<h5 class="text-danger"><i class="fa fa-times"></i> Ditolak </h5>';
+                            break;
+                        
+                        case 1:
+                            $info = '<h5 class="text-success"><i class="fa fa-check"></i> Disetujui </h5>';
+                            break;
+                    }
+                    return $info;
                 })
                 ->toJson();
         }
@@ -54,16 +68,17 @@ class inputLemburController extends Controller
     }
     public function store(Request $request)
     {
-        $nik = $request->session()->get('nik');
     	$rules = [
-            'tanggal' => 'required', 
+            'nik' => 'required|unique:tb_lembur,nik,null,id,tanggal,'.$request->tanggal, 
+            'tanggal' => 'required|unique:tb_lembur,tanggal,null,id,nik,'.$request->nik, 
             'masuk' => 'required', 
             'keluar' => 'required', 
             'fm' => 'required', 
         ];
 
         $customMessages = [
-            'required' => ':attribute Tidak Boleh Kosong.'
+            'required' => ':attribute Tidak Boleh Kosong.',
+            'unique' => ':attribute Sudah Ada.',
         ];
 
         $this->validate($request, $rules, $customMessages);
@@ -73,7 +88,7 @@ class inputLemburController extends Controller
         // echo $date;
         // die();
         $lembur = new lemburModel;
-        $lembur->nik = $nik;
+        $lembur->nik = $request->nik;
         $lembur->tanggal = $request->tanggal;
         $lembur->masuk = $request->masuk;
         $lembur->keluar = $request->keluar;

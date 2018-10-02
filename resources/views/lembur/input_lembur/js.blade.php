@@ -3,14 +3,21 @@
 	$(document).ready(function() {
 		moment.locale('id');
 		$('[data-toggle="tooltip"]').tooltip();
-		$('#alert_unggah').alert('close');
-
 	    $("#upload").change(function(){
 	      $('.custom-file-label').html(this.value.split("\\").pop());
 	    });
 
 	    // data( moment().format('Y'), moment().format('MM') );
 	});
+	function validate(form) {
+		if(!valid) {
+			alert('Please correct the errors in the form!');
+			return false;
+		}
+		else {
+			return confirm('Do you really want to submit the form?');
+		}
+	}
 	function date() {
 		$('#tanggal').datetimepicker({
             locale: 'id',
@@ -41,10 +48,8 @@
             // sideBySide: true,
             useCurrent: false,
 
-        });
-
-		$('#tanggal').data("DateTimePicker").maxDate( moment().format('YYYY-MM-dd') );
-		// $('#tanggal').data("DateTimePicker").minDate( moment().format('YYYY-MM-01') );
+        });		
+		$('#tanggal').data("DateTimePicker").maxDate( moment().format('YYYY-MM-DD') );
 
         $("#tanggal").on("dp.change", function (e) {			
 			
