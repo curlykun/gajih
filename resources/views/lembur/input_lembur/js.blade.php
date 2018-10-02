@@ -43,8 +43,8 @@
 
         });
 
-		$('#tanggal').data("DateTimePicker").maxDate( moment().format('YYYY-MM-DD') );
-		$('#tanggal').data("DateTimePicker").minDate( moment().format('YYYY-MM-01') );
+		$('#tanggal').data("DateTimePicker").maxDate( moment().format('YYYY-MM-dd') );
+		// $('#tanggal').data("DateTimePicker").minDate( moment().format('YYYY-MM-01') );
 
         $("#tanggal").on("dp.change", function (e) {			
 			

@@ -16,6 +16,7 @@
 <script type="text/javascript" src="{{ url('coreui/vendors/DataTables/js/jquery.dataTables.js') }}"></script>
 <script type="text/javascript" src="{{ url('coreui/vendors/DataTables/js/dataTables.responsive.js') }}"></script>
 <script type="text/javascript" src="{{ url('coreui/vendors/bootstrap4-datetimepicker-master/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+{!! $html->scripts() !!}
 @include('lembur.input_lembur.js')
 @endsection
 
@@ -37,18 +38,8 @@
         <div class="form-inline">
             <button type="submit" class="btn btn-outline-primary mb-2" onclick="date()" data-backdrop="static" data-toggle="modal" href='#modal_upload'><i class="fa fa-clock-o"></i> INPUT DATA LEMBUR</button>
         </div>
-        <table id="upload-table" class="table table-responsive-lg table-hover">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>NIK</th>
-                    <th>NAMA</th>
-                    <th>TANGGAL</th>
-                    <th>MASUK</th>
-                    <th>KELUAR</th>
-                </tr>
-            </thead>
-        </table>
+        {!! $html->table(['class' => 'table table-responsive-sm table-hover']) !!}
+        
     @endcomponent
 
     {{ Form::open(['url'=>'/lembur/input_lembur/store','method'=>'post']) }}
