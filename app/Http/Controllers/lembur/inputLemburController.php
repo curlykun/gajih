@@ -4,7 +4,7 @@ namespace App\Http\Controllers\lembur;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\lemburModel;
+use App\LemburModel;
 use App\UserModel;
 use Carbon\Carbon;
 use DataTables;
@@ -23,7 +23,7 @@ class inputLemburController extends Controller
     {
         if (request()->ajax()) {
             $nik = $request->session()->get('nik');
-            $data = lemburModel::where('nik',$nik)->orderBy('tanggal','desc');
+            $data = LemburModel::where('nik',$nik)->orderBy('tanggal','desc');
             return DataTables::of($data)
                 ->addColumn('action', function ($data) {
                     $info = '';
@@ -87,7 +87,7 @@ class inputLemburController extends Controller
 
         // echo $date;
         // die();
-        $lembur = new lemburModel;
+        $lembur = new LemburModel;
         $lembur->nik = $request->nik;
         $lembur->tanggal = $request->tanggal;
         $lembur->masuk = $request->masuk;

@@ -11,7 +11,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 use App\Http\Controllers\Controller;
-use App\absensiModel;
+use App\AbsensiModel;
 use App\sys_user;
 use DataTables;
 
@@ -35,7 +35,7 @@ class uploadAbsensiController extends Controller
     }
     public function tahun()
     {
-        $data = absensiModel::selectRaw(' date_format(tanggal,"%Y") as year ')->groupBy('year')->orderBy('year','desc')->get();
+        $data = AbsensiModel::selectRaw(' date_format(tanggal,"%Y") as year ')->groupBy('year')->orderBy('year','desc')->get();
         return $data;
     }
     public function upload(Request $request)
@@ -69,9 +69,9 @@ class uploadAbsensiController extends Controller
         
         foreach ($sheetData as $key => $value) {
             if($key > 1){
-                $c = absensiModel::check($value['A'],$value['C'])->count();
+                $c = AbsensiModel::check($value['A'],$value['C'])->count();
                 if( $c == 0 ){
-                    $query = new absensiModel();
+                    $query = new AbsensiModel();
                     $query->nik = $value['A'];
                     $query->tanggal = date('Y-m-d',strtotime( $value['C']) );
                     $query->masuk = $value['D'];
@@ -86,7 +86,7 @@ class uploadAbsensiController extends Controller
     }
     public function getBasicData(Request $request)
     {
-        $absensis = absensiModel::with('sys_user')->whereYear('tanggal',$request->tahun)->whereMonth('tanggal',$request->bulan)->get();
+        $absensis = AbsensiModel::with('sys_user')->whereYear('tanggal',$request->tahun)->whereMonth('tanggal',$request->bulan)->get();
         return Datatables::of($absensis)->make();
     }
 }
