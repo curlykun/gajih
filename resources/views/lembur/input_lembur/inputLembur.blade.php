@@ -42,7 +42,7 @@
         
     @endcomponent
     {{ 
-        Form::open([ 'url'=>'/lembur/input_lembur/store','method'=>'post',
+        Form::open([ 'url'=>Route('InputLembur.store'),'method'=>'post',
         'onsubmit'=>'if(!confirm("Apakah data yang akan anda masukan sudah benar?")){return false;}']) 
     }}
     @component('component.modal-primary',['id'=>'modal_upload','title'=>'INPUT DATA LEMBUR','size'=>'modal-lg'])

@@ -15,7 +15,7 @@ use App\AbsensiModel;
 use App\sys_user;
 use DataTables;
 
-class uploadAbsensiController extends Controller
+class UploadAbsensiController extends Controller
 {
     public function __construct()
     {
@@ -63,13 +63,14 @@ class uploadAbsensiController extends Controller
     }
     public function store()
     {
-        $inputFileName  = './public/storage/files/'.date('Ym').'/'.date('Ym').'.xlsx';
+        $inputFileName  = './storage/files/'.date('Ym').'/'.date('Ym').'.xlsx';
         $spreadsheet    = IOFactory::load($inputFileName);
         $sheetData      = $spreadsheet->getActiveSheet()->toArray(null, true, true, true);
         
         foreach ($sheetData as $key => $value) {
             if($key > 1){
-                $c = AbsensiModel::check($value['A'],$value['C'])->count();
+                $date = date('Y-m-d', strtotime($value['C']));
+                $c = AbsensiModel::check($value['A'],$date)->count();
                 if( $c == 0 ){
                     $query = new AbsensiModel();
                     $query->nik = $value['A'];
@@ -78,7 +79,7 @@ class uploadAbsensiController extends Controller
                     $query->keluar = $value['E'];
                     $query->save();
                 }else{
-                    return redirect()->route('upload_absensi')->withErrors(['error'=>'Duplikat data : '.$value['A'].' - '.$value['C'] ]);
+                    return redirect()->route('upload_absensi')->withErrors(['error'=>'Duplikat data : NIK : '.$value['A'].' - Tanggal : '.$value['C'] ]);
                 }
             }
         }

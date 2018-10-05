@@ -12,7 +12,7 @@ use PhpOffice\PhpSpreadsheet\Helper\Sample;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
-class userController extends Controller
+class UserController extends Controller
 {
     public function __construct()
     {

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\userModel;
 
-class debugController extends Controller
+class DebugController extends Controller
 {
     public function index(Request $request)
     {

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\sys_user;
 
-class homeController extends Controller
+class HomeController extends Controller
 {
 	public function __construct ()
     {

@@ -12,52 +12,49 @@
 */
 
 Route::group(['middleware' => ['checkSession','checkMenu'] ],function(){
-	Route::get('/', 'homeController@index');
+	Route::get('/', 'HomeController@index')->name('index');
 
-	/*Start Data Master*/
 	// MENU KARYAWAN
 	Route::prefix('user')->group(function () {
-		Route::get('/', 'data_master\userController@index');
-		Route::get('/get/{nik?}', 'data_master\userController@get');
-		Route::get('/menu/{nik?}', 'data_master\userController@listMenu');
-		Route::post('/show', 'data_master\userController@show');
-		Route::post('/save', 'data_master\userController@save');
-		Route::post('/update', 'data_master\userController@update');
-		Route::post('/update_useraccess', 'data_master\userController@update_useraccess');
-		Route::delete('/delete', 'data_master\userController@delete');
-		Route::post('/addtunjangan', 'data_master\userController@addTunjangan');
-		Route::post('/tunjangan', 'data_master\userController@tunjangan');
-		Route::get('/export', 'data_master\userController@export');
-		Route::get('/import', 'data_master\userController@import');
+		Route::get('/', 'data_master\UserController@index');
+		Route::get('/get/{nik?}', 'data_master\UserController@get');
+		Route::get('/menu/{nik?}', 'data_master\UserController@listMenu');
+		Route::post('/show', 'data_master\UserController@show');
+		Route::post('/save', 'data_master\UserController@save');
+		Route::post('/update', 'data_master\UserController@update');
+		Route::post('/update_useraccess', 'data_master\UserController@update_useraccess');
+		Route::delete('/delete', 'data_master\UserController@delete');
+		Route::post('/addtunjangan', 'data_master\UserController@addTunjangan');
+		Route::post('/tunjangan', 'data_master\UserController@tunjangan');
+		Route::get('/export', 'data_master\UserController@export');
+		Route::get('/import', 'data_master\UserController@import');
 	});
 
 	//MENU UPLOAD ABSENSI
 	Route::prefix('upload_absensi')->group(function () {
-		Route::get('/', 'data_master\uploadAbsensiController@index')->name('upload_absensi');
-		Route::post('/upload', 'data_master\uploadAbsensiController@upload');
-		Route::get('/store', 'data_master\uploadAbsensiController@store')->name('upload_absensi.store');
-		Route::post('/data', 'data_master\uploadAbsensiController@getBasicData')->name('upload_absensi.data');
-		Route::get('/debug', 'data_master\debugController@index');
+		Route::get('/', 'data_master\UploadAbsensiController@index')->name('upload_absensi');
+		Route::post('/upload', 'data_master\UploadAbsensiController@upload');
+		Route::get('/store', 'data_master\UploadAbsensiController@store')->name('upload_absensi.store');
+		Route::post('/data', 'data_master\UploadAbsensiController@getBasicData')->name('upload_absensi.data');
 	});
 
 	//MENU UPLOAD LEMBUR
-	Route::prefix('lembur')->group(function () {
-		Route::get('/', function(){
-
-		});
-		Route::get('/input_lembur', 'lembur\inputLemburController@index')->name('lembur.input_lembur');
-		Route::post('/input_lembur/store', 'lembur\inputLemburController@store');
+	Route::prefix('input-lembur')->group(function () {
+		Route::get('/', 'lembur\InputLemburController@index')->name('InputLembur');
+		Route::post('/store', 'lembur\InputLemburController@store')->name('InputLembur.store');
 	});
 
-	/*End Data Master*/
+	//MENU APPROV LEMBUR
+	Route::prefix('approv-lembur')->group(function () {
+		Route::get('/', 'lembur\ApprovLemburController@index')->name('ApprovLembur');
+		Route::post('/store', 'lembur\ApprovLemburController@store')->name('ApprovLembur.store');
+	});
+
 });
 //auth
-Route::get('/login', 'homeController@login');
-Route::get('/logout', 'homeController@logout');
-Route::post('/cekuser', 'homeController@cekuser');
+Route::get('/login', 'HomeController@login');
+Route::get('/logout', 'HomeController@logout');
+Route::post('/cekuser', 'HomeController@cekuser');
 
-
-
-
-Route::get('/test', 'homeController@test');
-Route::get('/debug', 'debugController@index');
+Route::get('/test', 'HomeController@test');
+Route::get('/debug', 'DebugController@index');

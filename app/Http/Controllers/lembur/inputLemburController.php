@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Builder;
 use Form;
 use Html;
 
-class inputLemburController extends Controller
+class InputLemburController extends Controller
 {
     public function __construct(Builder $htmlBuilder)
     {
