@@ -42,18 +42,18 @@
         
     @endcomponent
     {{ 
-        Form::open([ 'url'=>Route('InputLembur.store'),'method'=>'post',
+        Form::open([ 'url'=>Route('InputLembur.store'),'method'=>'post','class'=>'form-inline',
         'onsubmit'=>'if(!confirm("Apakah data yang akan anda masukan sudah benar?")){return false;}']) 
     }}
     @component('component.modal-primary',['id'=>'modal_upload','title'=>'INPUT DATA LEMBUR','size'=>'modal-lg'])
         {{ Form::hidden( 'nik',Session::get('nik') ) }}
-        <div class="row p-2">
-            <select class="form-control border-primary" id="fm" name="fm" required data-toggle="tooltip" data-placement="top" title="PILIH FACTORY MANAGER">
-                <option value="">Pilih FM</option>
-                @foreach($data_fm as $key => $value )
-                <option value="{{ $value->nik }}">{{ $value->name }}</option>
-                @endforeach
-            </select>
+        <div class="row p-3">
+            @foreach($dataHRD as $key => $value )
+                {{ Form::hidden('fm',$value->nik,['autocomplete'=>'off','class'=>'form-control','id'=>'fm','readonly']) }}
+
+                {{ Form::label('hrd','HRD : ',['class'=>'mr-sm-2']) }}
+                {{ Form::text('hrd',$value->name,['autocomplete'=>'off','class'=>'form-control col-sm-11 mt-sm-1','id'=>'hrd','readonly']) }}
+            @endforeach
         </div>
         <div class="row p-2">
 

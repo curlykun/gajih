@@ -58,12 +58,12 @@ class InputLemburController extends Controller
 
         $data_group 	= $request->get('data_group');
         $data_menu      = $request->get('data_menu');
-        $data_fm        = $this->getFM();
-        return view('lembur.input_lembur.inputLembur',compact('data_group','data_menu','data_fm','html') );
+        $dataHRD        = $this->getHRD();
+        return view('lembur.input_lembur.inputLembur',compact('data_group','data_menu','dataHRD','html') );
     }
-    public function getFM()
+    public function getHRD()
     {
-       $data = UserModel::where('jabatan','FACTORY MANAGER')->get();
+       $data = UserModel::where('jabatan','HRD')->get();
         return $data;
     }
     public function store(Request $request)

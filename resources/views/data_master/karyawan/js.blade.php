@@ -66,7 +66,7 @@
                 if(jabatan.toUpperCase() === 'KEUANGAN'){
                     return tunjangan;
                 }
-                if(jabatan.toUpperCase() === 'ADMIN'){
+                if(jabatan.toUpperCase() === 'ADMINISTRATOR'){
                     return del+edit+user_access+tunjangan;
                 }else{
                     return '<span class="fa fa-check-circle-o text-success fa-lg"></span>';
