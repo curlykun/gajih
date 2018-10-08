@@ -50,6 +50,13 @@ Route::group(['middleware' => ['checkSession','checkMenu'] ],function(){
 		Route::post('/store', 'lembur\ApprovLemburController@store')->name('ApprovLembur.store');
 	});
 
+	//MENU BUAT SPL HAK AKSES UNTUK HRD
+	Route::prefix('buat-spl')->group(function () {
+		Route::get('/', 'lembur\BuatSplController@index')->name('BuatSpl');
+		Route::get('/show', 'lembur\BuatSplController@show')->name('BuatSpl.show');
+		Route::post('/store', 'lembur\BuatSplController@store')->name('BuatSpl.store');
+	});
+
 });
 //auth
 Route::get('/login', 'HomeController@login');
