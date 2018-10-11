@@ -35,34 +35,31 @@
 		$('#tanggal').datetimepicker({
             locale: 'id',
             format: 'YYYY-MM-DD',
-            inline: true,
+            inline: false,
             keepOpen : true,
-            // showClear : true,
-            // sideBySide: true,
             useCurrent: false,
+            keepOpen: false,
             
         });
         $('#masuk').datetimepicker({
             locale: 'id',
             format: 'HH:mm:00',
-            inline: true,
+            inline: false,
             keepOpen : true,
-            // showClear : true,
-            // sideBySide: true,
             useCurrent: false,
+            keepOpen: false,
             
         });
         $('#keluar').datetimepicker({
             locale: 'id',
             format: 'HH:mm:00',
-            inline: true,
+            inline: false,
             keepOpen : true,
-            // showClear : true,
-            // sideBySide: true,
             useCurrent: false,
+            keepOpen: false,
 
         });		
-		$('#tanggal').data("DateTimePicker").maxDate( moment().format('YYYY-MM-DD') );
+		$('#tanggal').data("DateTimePicker").minDate( moment().format('YYYY-MM-DD') );
 
         $("#tanggal").on("dp.change", function (e) {			
 			

@@ -26,6 +26,13 @@ class BuatSplController extends Controller
         $dataHRD        = $this->getHRD();
         return view('lembur.buat_spl.BuatSpl',compact('data_group','data_menu','dataHRD') );
     }
+    public function formSpl(Request $request)
+    {       
+        $data_group 	= $request->get('data_group');
+        $data_menu      = $request->get('data_menu');
+        $data_karyawan  = UserModel::paginate(10);
+        return view('lembur.buat_spl.FormSpl',compact('data_group','data_menu','data_karyawan') );
+    }
     public function show(Request $request)
     {
         $nik  = $request->session()->get('nik');

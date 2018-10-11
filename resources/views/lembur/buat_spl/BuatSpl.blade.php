@@ -35,9 +35,9 @@
             <i class="fa fa-calendar-check-o"></i> BUAT SURAT PERINTAH LEMBUR
         @endslot
         <div class="form-inline">
-            <button type="submit" class="btn btn-outline-primary mb-2" onclick="date()" data-backdrop="static" data-toggle="modal" href='#modal_upload'>
+            <a href="{{ url('/buat-spl/form-spl') }}" class="btn btn-outline-primary mb-2">
                 <i class="fa fa-clock-o"></i> INPUT DATA SPL
-            </button>
+            </a>
         </div>
         <table class="table table-responsive-sm table-hover" id="table">
             <thead>
@@ -51,48 +51,4 @@
             </thead>
         </table>        
     @endcomponent
-    {{ 
-        Form::open([ 'url'=>Route('InputLembur.store'),'method'=>'post','class'=>'form-inline',
-        'onsubmit'=>'if(!confirm("Apakah data yang akan anda masukan sudah benar?")){return false;}']) 
-    }}
-    @component('component.modal-primary',['id'=>'modal_upload','title'=>'INPUT DATA LEMBUR','size'=>'modal-lg'])
-        {{ Form::hidden( 'nik',Session::get('nik') ) }}
-        <div class="row p-3">
-            @foreach($dataHRD as $key => $value )
-                {{ Form::hidden('fm',$value->nik,['autocomplete'=>'off','class'=>'form-control','id'=>'fm','readonly']) }}
-
-                {{ Form::label('hrd','HRD : ',['class'=>'mr-sm-2']) }}
-                {{ Form::text('hrd',$value->name,['autocomplete'=>'off','class'=>'form-control col-sm-11 mt-sm-1','id'=>'hrd','readonly']) }}
-            @endforeach
-        </div>
-        <div class="row p-2">
-
-            <div class="col-sm-12 col-md-12 col-lg-4 border border-primary">
-                <div class="6"><p class="text-center">TANGGAL<br><span id="txt_tanggal">-</span></p></div>
-                <div class="6">
-                    {{ Form::hidden('tanggal',old('masuk'),['autocomplete'=>'off','class'=>'form-control','id'=>'tanggal','required']) }}
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-md-12 col-lg-4 border border-primary">
-                <div class="6"><p class="text-center">MASUK<br><span id="txt_masuk">-</span></p></div>
-                <div class="6">
-                    {{ Form::hidden('masuk',old('masuk'),['autocomplete'=>'off','class'=>'form-control','id'=>'masuk','required']) }}
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-md-12 col-lg-4 border border-primary">
-                <div class="6"><p class="text-center">KELUAR<br><span id="txt_keluar">-</span></p></div>
-                <div class="6">
-                    {{ Form::hidden('keluar',old('keluar'),['autocomplete'=>'off','class'=>'form-control','id'=>'keluar','required']) }}
-                </div>
-            </div>
-
-        </div>
-        @slot('footer')
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Keluar</button>
-            <input type="submit" class="btn btn-primary" value="Simpan">
-        @endslot
-    @endcomponent
-    {{ Form::close() }}
 @endsection
