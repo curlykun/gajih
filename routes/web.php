@@ -56,6 +56,8 @@ Route::group(['middleware' => ['checkSession','checkMenu'] ],function(){
 		Route::get('/show', 'lembur\BuatSplController@show')->name('BuatSpl.show');
 		Route::post('/store', 'lembur\BuatSplController@store')->name('BuatSpl.store');
 		Route::get('/form-spl', 'lembur\BuatSplController@formSpl')->name('BuatSpl.FormSpl');
+		Route::post('/pilih-karyawan', 'lembur\BuatSplController@pilihKaryawan')->name('BuatSpl.PilihKaryawan');
+		Route::post('/batal-karyawan', 'lembur\BuatSplController@batalKaryawan')->name('BuatSpl.BatalKaryawan');
 	});
 
 });
