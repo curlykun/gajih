@@ -63,7 +63,11 @@
             <div class="form-group row">
                 <label for="simpan" class="col-sm-2 col-form-label">SIMPAN</label>
                 <div class="col-sm-10">
-                    <button type="submit" class="btn btn-dark">
+                    <a class="btn btn-dark" role="button" href="{{ route('BuatSpl') }}">
+                            <i class="fa fa-arrow-left"></i>
+                            Kembli
+                    </a>
+                    <button type="submit"  class="btn btn-dark">
                         <i class="fa fa-save"></i>
                     </button>
                 </div>
@@ -74,9 +78,9 @@
                 <h5>Daftar Karyawan</h5>
                 <form action="{{ url()->current() }}" method="GET">
                     <div class="input-group mb-3">
-                        <input type="text" name="keyword1" class="form-control border border-dark" placeholder="Cari Data" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <input type="text" name="keyword1" class="form-control border border-dark" placeholder="Cari Data" value="{{ $keyword1 }}">
                         <div class="input-group-append">
-                            <button class="btn btn-outline-dark" type="submit">Button</button>
+                            <button class="btn btn-outline-dark" type="submit">Cari</button>
                         </div>
                     </div>
                 </form>
@@ -119,9 +123,9 @@
                 <h5>Daftar Karyawan untuk Lembur</h5>
                 <form action="{{ url()->current() }}" method="GET">
                     <div class="input-group mb-3">
-                        <input type="text" name="keyword2" class="form-control border border-dark" placeholder="Cari Data" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <input type="text" name="keyword2" class="form-control border border-dark" placeholder="Cari Data" value="{{ $keyword2 }}">
                         <div class="input-group-append">
-                            <button class="btn btn-outline-dark" type="submit">Button</button>
+                            <button class="btn btn-outline-dark" type="submit">Cari</button>
                         </div>
                     </div>
                 </form>

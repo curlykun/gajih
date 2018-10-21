@@ -26,4 +26,9 @@ class UserModel extends Model
     {
         return $this->belongsTo('App\LemburTempModel','nik','nik');
     }
+
+    public function lembur()
+    {
+        return $this->belongsTo('App\LemburModel','nik','nik');
+    }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\lembur;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\LemburModel;
+use DataTables;
 
 class ApprovLemburController extends Controller
 {
@@ -18,5 +20,11 @@ class ApprovLemburController extends Controller
         return view('lembur.approv_lembur.approvLembur',
             compact('data_group','data_menu') 
         );
+    }
+    public function show(Request $request)
+    {
+        $nik  = $request->session()->get('nik');
+        $data = LemburModel::where('nik',$nik)->with('user')->orderBy('tanggal','desc');
+        return  DataTables::of($data)->make();
     }
 }

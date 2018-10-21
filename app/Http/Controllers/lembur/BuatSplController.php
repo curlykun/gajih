@@ -24,25 +24,42 @@ class BuatSplController extends Controller
     {       
         $data_group 	= $request->get('data_group');
         $data_menu      = $request->get('data_menu');
-        return view('lembur.buat_spl.BuatSpl',compact('data_group','data_menu') );
+        $keyword        = isset($request->keyword)?$request->keyword:'';
+        $show           = $this->show($keyword);
+        return view('lembur.buat_spl.BuatSpl',compact('data_group','data_menu','show','keyword') );
     }
     public function formSpl(Request $request)
     {   
         $data_group 	= $request->get('data_group');
         $data_menu      = $request->get('data_menu');
-        $data_karyawan  = UserModel::doesnthave('lemburTemp')->paginate(10,['*'],'page1');
+        $keyword1       = isset($request->keyword1) ? $request->keyword1 : '';
+        $keyword2       = isset($request->keyword2) ? $request->keyword2 : '';
+        $data_karyawan  = UserModel::where('nik', 'like',"%{$keyword1}%" )
+                            ->orWhere('name', 'like',"%{$keyword1}%" )
+                            ->orWhere('jabatan', 'like',"%{$keyword1}%" )
+                            ->doesnthave('lemburTemp')->paginate(10,['*'],'page1');
+
         $data_karyawan->appends(['keyword1'=>$request->keyword1,'keyword2'=>$request->keyword2,'page2'=>$request->page2,'page1'=>$request->page1]);
 
-        $data_pilih_karyawan  = LemburTempModel::paginate(10,['*'],'page2');
+        $data_pilih_karyawan  = LemburTempModel::whereHas('user', function ($query) use ($keyword2) {
+                                                $query->where('nik', 'like',"%{$keyword2}%" )
+                                                ->orWhere('name', 'like',"%{$keyword2}%" )
+                                                ->orWhere('jabatan', 'like',"%{$keyword2}%" );
+                                            })->paginate(10,['*'],'page2');
+
         $data_pilih_karyawan->appends(['keyword1'=>$request->keyword1,'keyword2'=>$request->keyword2,'page2'=>$request->page2,'page1'=>$request->page1]);
 
-        return view('lembur.buat_spl.FormSpl',compact('data_group','data_menu','data_karyawan','data_pilih_karyawan') );
+        return view('lembur.buat_spl.FormSpl',compact('data_group','data_menu','data_karyawan','data_pilih_karyawan','keyword1','keyword2') );
     }
-    public function show(Request $request)
+    public function show($cari)
     {
-        $nik  = $request->session()->get('nik');
-        $data = LemburModel::where('nik',$nik)->orderBy('tanggal','desc');
-        return  DataTables::of($data)->make();
+        $data = LemburModel::with('user')->whereHas('user', function ($query) use ($cari) {
+            $query->where('nik', 'like',"%{$cari}%" )
+            ->orWhere('tanggal', 'like',"%{$cari}%" )
+            ->orWhere('name', 'like',"%{$cari}%" );
+        })->orderBy('tanggal','desc')->get();
+
+        return  $data;
     }
     public function pilihKaryawan(Request $request)
     {

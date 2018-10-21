@@ -1,36 +1,8 @@
 {{-- custom javasvript untuk view Buat SPL --}}
 <script type="text/javascript">
 	$(document).ready(function() {
-		moment.locale('id');
-		$('[data-toggle="tooltip"]').tooltip();
-	    $("#upload").change(function(){
-	      $('.custom-file-label').html(this.value.split("\\").pop());
-	    });
-
-	    $('#table').DataTable({
-            "responsive": true,
-            "processing": true,
-            "serverSide": true,
-            "sDom": 'tipr', 
-            "ajax": '{{ Route("BuatSpl.show") }}',
-            "columns": [
-                {"data": 'nik', "name": 'nik'},
-                {"data": 'tanggal', "name": 'tanggal'},
-                {"data": 'masuk', "name": 'masuk'},
-                {"data": 'keluar', "name": 'keluar'},
-                {"data": 'approv', "name": 'approv'}
-            ]
-        });
+	   
 	});
-	function validate(form) {
-		if(!valid) {
-			alert('Please correct the errors in the form!');
-			return false;
-		}
-		else {
-			return confirm('Do you really want to submit the form?');
-		}
-	}
 	function date() {
 		$('#tanggal').datetimepicker({
             locale: 'id',

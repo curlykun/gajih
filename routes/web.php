@@ -48,6 +48,7 @@ Route::group(['middleware' => ['checkSession','checkMenu'] ],function(){
 	Route::prefix('approv-lembur')->group(function () {
 		Route::get('/', 'lembur\ApprovLemburController@index')->name('ApprovLembur');
 		Route::post('/store', 'lembur\ApprovLemburController@store')->name('ApprovLembur.store');
+		Route::get('/show', 'lembur\ApprovLemburController@show')->name('ApprovLembur.show');
 	});
 
 	//MENU BUAT SPL HAK AKSES UNTUK HRD
