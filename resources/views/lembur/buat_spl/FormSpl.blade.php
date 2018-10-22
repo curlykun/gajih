@@ -37,11 +37,11 @@
         @slot('title')
             <i class="fa fa-calendar-check-o"></i> BUAT SURAT PERINTAH LEMBUR
         @endslot
-        <form action="{{ route('BuatSpl.store') }}" method="POST">
+        <form action="{{ route('BuatSpl.store') }}" method="POST" id="form">
             <div class="form-group row">
                 <label for="tanggal" class="col-sm-2 col-form-label">Tanggal</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="tanggal" name="tanggal" autocomplete="off" required>
+                    <input type="text" class="form-control" id="tanggal" name="tanggal" autocomplete="off" required value="{{ old('tanggal') }}">
                     <input type="hidden" class="form-control" name="_token" value="{{ csrf_token() }}">
                 </div>
             </div>
@@ -49,14 +49,14 @@
             <div class="form-group row">
                 <label for="masuk" class="col-sm-2 col-form-label">Jam Masuk</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="masuk" name="masuk" autocomplete="off" required>
+                    <input type="text" class="form-control" id="masuk" name="masuk" autocomplete="off" required value="{{ old('masuk') }}">
                 </div>
             </div>
         
             <div class="form-group row">
                 <label for="keluar" class="col-sm-2 col-form-label">Jam Keluar</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="keluar" name="keluar" autocomplete="off" required>
+                    <input type="text" class="form-control" id="keluar" name="keluar" autocomplete="off" required value="{{ old('keluar') }}">
                 </div>
             </div>
 
@@ -101,6 +101,13 @@
                             <td>{{ $item->jabatan }}</td>
                             <td>
                                 <form action="{{ route('BuatSpl.PilihKaryawan') }}" method="post">
+                                    <div id="init">
+                                        @if ( old('tanggal') )
+                                            <input type="hidden" value="{{ old('tanggal') }}" name="tanggal"/>
+                                            <input type="hidden" value="{{ old('masuk') }}" name="masuk"/>
+                                            <input type="hidden" value="{{ old('keluar') }}" name="keluar"/>
+                                        @endif
+                                    </div>
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <input type="hidden" name="nik" value="{{ $item->nik }}">
                                     <button class="btn btn-sm btn-dark" type="submit">

@@ -34,10 +34,11 @@ class BuatSplController extends Controller
         $data_menu      = $request->get('data_menu');
         $keyword1       = isset($request->keyword1) ? $request->keyword1 : '';
         $keyword2       = isset($request->keyword2) ? $request->keyword2 : '';
-        $data_karyawan  = UserModel::where('nik', 'like',"%{$keyword1}%" )
-                            ->orWhere('name', 'like',"%{$keyword1}%" )
-                            ->orWhere('jabatan', 'like',"%{$keyword1}%" )
-                            ->doesnthave('lemburTemp')->paginate(10,['*'],'page1');
+        $data_karyawan  = UserModel::whereDoesntHave('lemburTemp', function ($query) use ($keyword1) {
+            $query->where('nik', 'like',"%{$keyword1}%" )
+                ->orWhere('name', 'like',"%{$keyword1}%" )
+                ->orWhere('jabatan', 'like',"%{$keyword1}%" );
+        })->paginate(10,['*'],'page1');
 
         $data_karyawan->appends(['keyword1'=>$request->keyword1,'keyword2'=>$request->keyword2,'page2'=>$request->page2,'page1'=>$request->page1]);
 
@@ -77,7 +78,7 @@ class BuatSplController extends Controller
         $lamebutTemp->nik = $request->nik;
         $lamebutTemp->save();
         if($lamebutTemp){
-            return redirect()->back();
+            return redirect()->back()->withInput();
         }
     }
     public function BatalKaryawan(Request $request)
@@ -90,6 +91,7 @@ class BuatSplController extends Controller
     public function store(Request $request)
     {
         $lamebutTemp = LemburTempModel::all();
+        $lembur = [];
         foreach ($lamebutTemp as $key => $value) {
             $rules = [
                 // 'nik' => 'required|unique:tb_lembur,nik,null,id,tanggal,'.$request->tanggal, 
@@ -115,7 +117,9 @@ class BuatSplController extends Controller
 
         if($lembur){
             LemburTempModel::truncate();
-            return back();
+            return redirect()->route('BuatSpl');
+        }else{
+            return back()->withErrors(['error'=>'TIDAK ADA KARYAWAN YANG DI PILIH'])->withInput();
         }
 
     }
