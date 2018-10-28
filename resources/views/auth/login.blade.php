@@ -63,6 +63,11 @@
                 </div>
                 {{ csrf_field() }}
                 </form>
+                @if ( \Session::has('error') )
+                    <div class="alert alert-info mt-2">
+                      <h4>{{ \Session::get('error') }}</h4>
+                    </div>
+                @endif
               </div>
             </div>
             <div class="card bg-default py-5 d-md-down-none" style="width:44%">
