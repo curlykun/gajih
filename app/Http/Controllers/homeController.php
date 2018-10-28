@@ -71,10 +71,10 @@ class HomeController extends Controller
                     return redirect('/');
                 }
             }else{
-                return redirect('/');
+                return redirect()->back()->with('error', 'Gagal Login');  
             }
         }else{
-            return redirect('/');
+            return redirect()->back()->with('error', 'Gagal Login');  
         }
 
     }
